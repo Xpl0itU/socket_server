@@ -17,7 +17,7 @@ def receive_messages():
             data = sock.recv(1024)
             if not data:
                 break
-            print("\n" + data.decode("utf-8"))
+            print(data.decode("utf-8"))
 
 
 # Start a separate thread for receiving messages
@@ -28,4 +28,4 @@ receive_thread.start()
 while True:
     message = input()
     send_request(message)
-    print("", end="\033[F" * 2)
+    print("", end="\033[F")
