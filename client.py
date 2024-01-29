@@ -28,3 +28,4 @@ receive_thread.start()
 while True:
     message = input()
     send_request(message)
+    print("", end="\033[F" * 2)
