@@ -11,7 +11,7 @@ class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 def send_to_all(data, source_address):
     with lock:
-        for client_socket in connection_pool:
+        for client_socket in connection_pool.copy():
             if client_socket.getpeername() != source_address:
                 try:
                     client_socket.sendall(bytes(f"{source_address}: {data}", "utf-8"))
